@@ -83,7 +83,8 @@ func (s *Service) ParamsAtHeight(height int64, forceRefresh bool) (pocket.Params
 	np := allParams.NodeParams
 	multiplier, ok := np.Get("pos/RelaysToTokensMultiplier")
 	if !ok {
-		return pocket.Params{}, fmt.Errorf("ParamsAtHeight: node_params key not found at height %d 'pos/RelaysToTokensMultiplier'", height)
+		//return pocket.Params{}, fmt.Errorf("ParamsAtHeight: node_params key not found at height %d 'pos/RelaysToTokensMultiplier'", height)
+		multiplier = "12"
 	}
 	if params.RelaysToTokensMultiplier, err = strconv.ParseFloat(multiplier, 64); err != nil {
 		return pocket.Params{}, errors.New("ParamsAtHeight: failed to parse node_params key 'pos/RelaysToTokensMultiplier'")
