@@ -132,7 +132,8 @@ func (s *Service) AccountTransactions(address string, page uint, perPage uint, s
 	for i, tx := range txs {
 		params, err := s.ParamsAtHeight(int64(tx.Height), false)
 		if err != nil {
-			return nil, fmt.Errorf("AccountTransactions: %s", err)
+			continue
+			//return nil, fmt.Errorf("AccountTransactions: %s", err)
 		}
 
 		tx.Time, err = s.provider.BlockTime(tx.Height)
